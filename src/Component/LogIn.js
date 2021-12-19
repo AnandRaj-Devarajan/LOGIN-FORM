@@ -24,7 +24,9 @@ function LogIn() {
             seterrors({ pwd: "password include atleast 1 number,(uppercase,lowercase),1 special character", status: false });
         }
         else if (errors.email.length > 0 && errors.pwd.length > 0 && errors.status) {
-            let detail = email, pwd
+            let detail = 
+            localStorage.setItem('email', email);
+            localStorage.setItem('pwd', pwd);
             axios.post("http://dummy.restapiexample.com/api/v1/create", detail)
                 .then(res => {
                     if (res.data && res.data.success) {
